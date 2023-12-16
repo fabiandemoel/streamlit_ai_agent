@@ -1,4 +1,4 @@
 openai==0.27.8
 streamlit==1.27.2
 transformers==4.34.1
-pytorch
+torch
