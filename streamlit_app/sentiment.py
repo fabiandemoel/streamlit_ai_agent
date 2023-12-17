@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 ### Hugging Face Demo
 from transformers import pipeline
@@ -21,7 +22,10 @@ import openai
 st.title('OpenAI Version')
 
 analyze_button = st.button("Analyze Text")
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+try:
+    openai.api_key = os.environ['OPENAI_API_KEY']
+except:
+    openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 if analyze_button:
     messages = [
