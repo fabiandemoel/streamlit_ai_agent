@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_b33b3395e7784cfd8d2f1201b50f9e33 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_e73bfd48db7f45d5a0dc61bdf2739348 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0cb0ad25eabe4fbe8f8774064f77dce4 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_1b9f1dde388346e7b71fc128342bc169 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b33b3395e7784cfd8d2f1201b50f9e33 }}/fabiandemoel/sentiment_app:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0cb0ad25eabe4fbe8f8774064f77dce4 }}/fabiandemoel/sentiment_app:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'sentiment-fm'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3fcc524288ac4183bd539f8278af2174 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_b33b3395e7784cfd8d2f1201b50f9e33 }}/fabiandemoel/sentiment_app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_761c78573a114da6987e33bdd344f083 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0cb0ad25eabe4fbe8f8774064f77dce4 }}/fabiandemoel/sentiment_app:${{ github.sha }}'
