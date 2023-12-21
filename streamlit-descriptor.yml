@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-manual
+  labels:
+    name: sentiment-app
+spec:
+  containers:
+  - image: fabiandemoel/sentiment_app
+    name: kube
+    ports:
+    - containerPort: 8501
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-service
+spec:
+  type: LoadBalancer
+  selector:
+    name: sentiment-app
+  ports:
+    - name: streamlit-port
+      protocol: TCP
+      port: 80
+      targetPort: 8501
